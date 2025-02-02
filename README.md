@@ -1,6 +1,15 @@
 # chardeviceEnhanced
 
-`chardeviceEnhanced` 是一個增強型 Linux 字符設備驅動，支持動態緩衝區、數據鏡像、範圍清空等功能。
+`chardeviceEnhanced` 是 Linux 字符設備的驅動程式，具備動態緩衝區、數據鏡像、範圍清空等功能。
+
+## 文件結構
+```
+/
+├── chardeviceEnhanced.c  # 字符設備驅動程式
+├── test_chardevice.c     # 測試用戶空間程式
+├── Makefile              # 編譯規則
+└── README.md             # 本文件
+```
 
 ## 功能特性
 - **基本字符設備功能**：支持讀取 (`read`)、寫入 (`write`)。
@@ -12,7 +21,7 @@
 
 ## 內部實現
 
-### 主要數據結構
+### 主要資料結構
 - `device_buffer`：字符設備的內部緩衝區。
 - `buffer_size`：當前緩衝區大小。
 - `buffer_used`：緩衝區已使用的字節數。
@@ -24,15 +33,6 @@
 - `dev_write()`：寫入數據。
 - `dev_ioctl()`：處理 IOCTL 命令。
 - `dev_release()`：關閉設備，釋放內存。
-
-## 文件結構
-```
-/
-├── chardeviceEnhanced.c  # 字符設備驅動程式
-├── test_chardevice.c     # 測試用戶空間程式
-├── Makefile              # 編譯規則
-└── README.md             # 本文件
-```
 
 ## 編譯與安裝
 ### 1. 編譯模組
@@ -48,7 +48,6 @@ sudo insmod chardeviceEnhanced.ko
 ### 3. 創建設備文件
 ```sh
 sudo mknod /dev/chardeviceEnhanced c <主設備號> 0
-sudo chmod 666 /dev/chardeviceEnhanced
 ```
 (*註：主設備號可從 `dmesg | tail` 獲取*)
 
