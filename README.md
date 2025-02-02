@@ -1,4 +1,3 @@
-# charDeviceEnhanced
 # chardeviceEnhanced
 
 `chardeviceEnhanced` 是一個增強型 Linux 字符設備驅動，支持動態緩衝區、數據鏡像、範圍清空等功能。
